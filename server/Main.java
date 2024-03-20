@@ -15,6 +15,5 @@ public class Main {
         switch (command) {
             case "set" : dataBase.set(num, input);
         }
-
     }
 }
