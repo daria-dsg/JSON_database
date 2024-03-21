@@ -34,6 +34,6 @@ public class DataBase {
     }
 
     private boolean isIndexValid(int index) {
-        return (index <= 0 || index >= 99) ? false : true;
+        return (index < 0 || index >= 99) ? false : true;
     }
 }
