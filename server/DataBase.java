@@ -10,7 +10,7 @@ public class DataBase {
     void set (int cell, String input) {
         int index = cell - 1;
 
-        if (index >= 0 && index <= 99) {
+        if (isIndexValid(index)) {
             listOfData.set(index, input);
             System.out.println("OK");
         } else {
@@ -20,12 +20,20 @@ public class DataBase {
 
     void get (int cell) {
         int index = cell - 1;
-        String data = listOfData.get(index);
 
-        if (index <= 0 || index >= 99 || "".equals(data)) {
-            System.out.println("ERROR");
+        if (isIndexValid(index)) {
+            String data = listOfData.get(index);
+            if ("".equals(data)) {
+                System.out.println("ERROR");
+            } else {
+                System.out.println(data);
+            }
         } else {
-            System.out.println(data);
+            System.out.println("ERROR");
         }
+    }
+
+    private boolean isIndexValid(int index) {
+        return (index <= 0 || index >= 99) ? false : true;
     }
 }
