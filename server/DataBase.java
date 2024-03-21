@@ -3,12 +3,11 @@ package server;
 import java.util.*;
 
 public class DataBase {
-    private List<String> listOfData = new ArrayList<>(Collections.nCopies(100, ""));
+    private final List<String> listOfData = new ArrayList<>(Collections.nCopies(100, ""));
 
     protected void run(String input) {
-        String inputLine = input;
 
-        Scanner inputScanner = new Scanner(inputLine);
+        Scanner inputScanner = new Scanner(input);
 
         // Read the first and the second token
         String command = inputScanner.next();
@@ -61,9 +60,7 @@ public class DataBase {
 
         if (isIndexValid(index)) {
             String data = listOfData.get(index);
-            if ("".equals(data)) {
-                return;
-            } else {
+            if (!"".equals(data)) {
                 listOfData.remove(index);
             }
         } else {
@@ -72,6 +69,6 @@ public class DataBase {
     }
 
     private boolean isIndexValid(int index) {
-        return (index < 0 || index >= 99) ? false : true;
+        return index >= 0 && index < 99;
     }
 }
