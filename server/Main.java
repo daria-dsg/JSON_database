@@ -10,13 +10,15 @@ public class Main {
         DataBase dataBase = new DataBase();
 
         while (true) {
-            System.out.println("Enter a command (type 'exit' to quit): ");
+            System.out.println("Enter a command or type exit to quit (Press Enter to return token): ");
             String input = scanner.nextLine();
             if ("exit".equalsIgnoreCase(input)) {
                 break;
             } else {
-                dataBase.run();
+                dataBase.run(input);
             }
         }
+
+        scanner.close();
     }
 }
