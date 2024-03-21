@@ -20,8 +20,12 @@ public class Main {
         }
 
         switch (command) {
-            case "set" : dataBase.set(cellNumber, text);
-            case "get" : dataBase.get(cellNumber);
+            case "set" :
+                dataBase.set(cellNumber, text);
+                break;
+            case "get" :
+                dataBase.get(cellNumber);
+                break;
         }
     }
 }
