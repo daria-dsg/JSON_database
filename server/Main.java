@@ -9,11 +9,19 @@ public class Main {
         DataBase dataBase = new DataBase();
 
         String command = scanner.next();
-        int num = scanner.nextInt();
-        String input = scanner.next();
+        int cellNumber = 0;
+        String text = null;
+
+        if (scanner.hasNext()) {
+            cellNumber = scanner.nextInt();
+            if (scanner.hasNext()) {
+                text = scanner.next();
+            }
+        }
 
         switch (command) {
-            case "set" : dataBase.set(num, input);
+            case "set" : dataBase.set(cellNumber, text);
+            case "get" : dataBase.get(cellNumber);
         }
     }
 }
