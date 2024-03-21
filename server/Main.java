@@ -30,6 +30,9 @@ public class Main {
             case "get" :
                 dataBase.get(cellNumber);
                 break;
+            case "delete":
+                dataBase.delete(cellNumber);
+                break;
         }
     }
 }
