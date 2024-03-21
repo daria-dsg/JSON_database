@@ -9,30 +9,14 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         DataBase dataBase = new DataBase();
 
-        String command = null;
-        int cellNumber = 0;
-        String text = null;
-
-        while (scanner.hasNext()) {
-            command = scanner.next();
-            cellNumber = scanner.nextInt();
-
-            if (scanner.hasNext()) { text = scanner.nextLine(); }
-
-            if (scanner.next().equalsIgnoreCase("q")) break;
-        }
-
-
-        switch (Objects.requireNonNull(command)) {
-            case "set" :
-                dataBase.set(cellNumber, text);
+        while (true) {
+            System.out.println("Enter a command (type 'exit' to quit): ");
+            String input = scanner.nextLine();
+            if ("exit".equalsIgnoreCase(input)) {
                 break;
-            case "get" :
-                dataBase.get(cellNumber);
-                break;
-            case "delete":
-                dataBase.delete(cellNumber);
-                break;
+            } else {
+                dataBase.run();
+            }
         }
     }
 }
