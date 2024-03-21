@@ -1,5 +1,6 @@
 package server;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -8,18 +9,21 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         DataBase dataBase = new DataBase();
 
-        String command = scanner.next();
+        String command = null;
         int cellNumber = 0;
         String text = null;
 
-        if (scanner.hasNext()) {
+        while (scanner.hasNext()) {
+            command = scanner.next();
             cellNumber = scanner.nextInt();
-            if (scanner.hasNext()) {
-                text = scanner.next();
-            }
+
+            if (scanner.hasNext()) { text = scanner.nextLine(); }
+
+            if (scanner.next().equalsIgnoreCase("q")) break;
         }
 
-        switch (command) {
+
+        switch (Objects.requireNonNull(command)) {
             case "set" :
                 dataBase.set(cellNumber, text);
                 break;
