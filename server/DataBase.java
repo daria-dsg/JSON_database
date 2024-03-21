@@ -33,6 +33,21 @@ public class DataBase {
         }
     }
 
+    void delete (int cell) {
+        int index = cell - 1;
+
+        if (isIndexValid(index)) {
+            String data = listOfData.get(index);
+            if ("".equals(data)) {
+                return;
+            } else {
+                listOfData.remove(index);
+            }
+        } else {
+            System.out.println("ERROR");
+        }
+    }
+
     private boolean isIndexValid(int index) {
         return (index < 0 || index >= 99) ? false : true;
     }
