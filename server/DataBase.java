@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Objects;
 
 public class DataBase {
-    private final List<String> listOfData = new ArrayList<>(Collections.nCopies(100, ""));
+    private final List<String> listOfData = new ArrayList<>(Collections.nCopies(999, ""));
 
     protected void run(String input) {
 
