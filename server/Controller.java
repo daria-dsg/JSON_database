@@ -12,6 +12,4 @@ public class Controller {
     public void executeCommand(Object... args) {
         command.execute(args);
     }
-
-
 }
