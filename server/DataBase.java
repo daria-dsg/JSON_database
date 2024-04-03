@@ -7,7 +7,7 @@ import java.util.Collections;
 public class DataBase {
     private final List<String> listOfData = new ArrayList<>(Collections.nCopies(999, ""));
 
-    protected  String set (int cell, String input) {
+    public String set (int cell, String input) {
         int index = cell - 1;
 
         if (isIndexValid(index)) {
@@ -18,7 +18,7 @@ public class DataBase {
         }
     }
 
-    protected String get (int cell) {
+    public String get (int cell) {
         int index = cell - 1;
 
         if (isIndexValid(index)) {
@@ -33,7 +33,7 @@ public class DataBase {
         }
     }
 
-    protected String delete (int cell) {
+    public String delete (int cell) {
         int index = cell - 1;
 
         if (isIndexValid(index)) {
