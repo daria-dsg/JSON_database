@@ -1,6 +1,9 @@
-package server;
+package server.command;
 
-public class GetCell implements Command{
+import server.DataBase;
+import server.command.Command;
+
+public class GetCell implements Command {
     private DataBase db;
 
     GetCell(DataBase db) {
@@ -8,7 +11,7 @@ public class GetCell implements Command{
     }
 
     @Override
-    public String execute(int indexOfCell) {
-        return db.get(indexOfCell);
+    public String execute(Object... args) {
+        return db.get((int)args[0]);
     }
 }

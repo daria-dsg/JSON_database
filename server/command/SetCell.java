@@ -1,6 +1,9 @@
-package server;
+package server.command;
 
-public class SetCell implements Command{
+import server.DataBase;
+import server.command.Command;
+
+public class SetCell implements Command {
     private DataBase db;
 
     SetCell(DataBase db) {
@@ -8,8 +11,8 @@ public class SetCell implements Command{
     }
 
     @Override
-    public String execute(int indexOfCell, String message) {
-        return db.set(indexOfCell, message);
+    public String execute(Object... args) {
+        return db.set((int)args[0], (String)args[1]);
     }
 }
 
