@@ -5,7 +5,7 @@ import server.DataBase;
 public class GetCell implements Command {
     private final DataBase db;
 
-    GetCell(DataBase db) {
+    public GetCell(DataBase db) {
         this.db = db;
     }
 

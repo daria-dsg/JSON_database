@@ -5,7 +5,7 @@ import server.DataBase;
 public class DeleteCell implements Command {
     private final DataBase db;
 
-    DeleteCell(DataBase db) {
+    public DeleteCell(DataBase db) {
         this.db = db;
     }
 

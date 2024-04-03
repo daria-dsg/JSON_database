@@ -5,7 +5,7 @@ import server.DataBase;
 public class SetCell implements Command {
     private final DataBase db;
 
-    SetCell(DataBase db) {
+    public SetCell(DataBase db) {
         this.db = db;
     }
 
