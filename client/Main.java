@@ -31,12 +31,9 @@ public class Main {
                 .build()
                 .parse(args);
 
-        System.out.println(arguments.typeOfRequest);
-        System.out.println(arguments.idOfCell);
-        System.out.println(arguments.message);
+        String msg = buildMsg(arguments.typeOfRequest, arguments.idOfCell, arguments.message);
+        System.out.println(msg);
 
-    }
-}
 //        try (
 //             Socket socket = new Socket("localhost", 9999);
 //             DataInputStream input = new DataInputStream(socket.getInputStream());
@@ -53,6 +50,20 @@ public class Main {
 //        } catch (IOException e) {
 //            throw new RuntimeException(e);
 //        }
-//    }
-//}
+    }
+
+    private static String buildMsg(String type, int index, String message) {
+        String msg = type;
+
+        if (index > 0) {
+            msg += " " + index;
+        }
+        if (message != null) {
+            msg += " " + message;
+        }
+
+        return msg;
+    }
+}
+
 
