@@ -1,10 +1,9 @@
 package server.command;
 
 import server.DataBase;
-import server.command.Command;
 
 public class SetCell implements Command {
-    private DataBase db;
+    private final DataBase db;
 
     SetCell(DataBase db) {
         this.db = db;
