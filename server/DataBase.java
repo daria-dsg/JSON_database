@@ -66,6 +66,6 @@ public class DataBase {
     }
 
     private boolean isIndexValid(int index) {
-        return index >= 0 && index < 9999;
+        return index >= 0 && index < 999;
     }
 }
