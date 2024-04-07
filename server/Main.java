@@ -1,5 +1,7 @@
 package server;
 
+import server.command.*;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -7,6 +9,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Main {
+
 
     public static void main(String[] args) {
         try(
@@ -18,10 +21,39 @@ public class Main {
                 DataInputStream input = new DataInputStream(socket.getInputStream());
                 DataOutputStream output = new DataOutputStream(socket.getOutputStream())
             ) {
-                String reply = input.readUTF();
+                final DataBase db = new DataBase();
+                Controller controller = new Controller();
+
+                String reply = input.readUTF(); //read msg from client
                 System.out.println("Received: " + reply);
 
-                String msg = "A record # 12 was sent!";
+                String[] parts = reply.split("\\s+");
+
+                // Extract the command and arguments
+                String command = parts[0];
+                int number = Integer.parseInt(parts[1]);
+                String message = null;
+
+                if ("set".equals(command)) {
+                    message = parts[2];
+                }
+
+                String msg = null;
+
+                switch(command) {
+                    case "get":
+                        controller.setCommand(new GetCell(db));
+                        msg = controller.executeCommand(number);
+                        break;
+                    case "set":
+                        controller.setCommand(new SetCell(db));
+                        msg = controller.executeCommand(number, message);
+                        break;
+                    case "delete":
+                        controller.setCommand(new DeleteCell(db));
+                        msg = controller.executeCommand(number);
+                        break;
+                }
                 output.writeUTF(msg);
                 System.out.println("Sent: " + msg);
             }
@@ -29,5 +61,4 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
-
 }
