@@ -45,6 +45,9 @@ public class Main {
                             controller.setCommand(new DeleteCell(db));
                             msg = controller.executeCommand(number);
                             break;
+                         case "exit":
+                             output.writeUTF("exit");
+                             return;
                     }
                     output.writeUTF(msg);
                 }
