@@ -61,7 +61,8 @@ public class DataBase {
             return "ERROR";
         }
 
-        return "ERROR";
+        cells.set(index, "");
+        return "OK";
     }
 
     private boolean isIndexValid(int index) {
