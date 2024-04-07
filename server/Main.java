@@ -25,7 +25,6 @@ public class Main {
                 Controller controller = new Controller();
 
                 String reply = input.readUTF(); //read msg from client
-                System.out.println("Received: " + reply);
 
                 String[] parts = reply.split("\\s+");
 
@@ -55,7 +54,6 @@ public class Main {
                         break;
                 }
                 output.writeUTF(msg);
-                System.out.println("Sent: " + msg);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
