@@ -5,13 +5,28 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class DataBase {
-    private final List<String> listOfData = new ArrayList<>(Collections.nCopies(999, ""));
+    private final List<String> cells;
+    private static DataBase instance = null;
+
+    //Private constructor to prevent instantiation outside
+    private DataBase(int size) {
+        cells = new ArrayList<>(Collections.nCopies(size - 1, ""));
+    }
+
+    // Static method to get instance of database
+    public static DataBase getInstance() {
+        if (instance == null) {
+            instance = new DataBase(1000);
+        }
+
+        return instance;
+    }
 
     public String set (int cell, String input) {
         int index = cell - 1;
 
         if (isIndexValid(index)) {
-            listOfData.set(index, input);
+            cells.set(index, input);
             return "OK";
         } else {
             return "ERROR";
@@ -22,7 +37,7 @@ public class DataBase {
         int index = cell - 1;
 
         if (isIndexValid(index)) {
-            String data = listOfData.get(index);
+            String data = cells.get(index);
             if ("".equals(data)) {
                 return "ERROR";
             } else {
@@ -37,9 +52,9 @@ public class DataBase {
         int index = cell - 1;
 
         if (isIndexValid(index)) {
-            String data = listOfData.get(index);
+            String data = cells.get(index);
             if (!"".equals(data)) {
-                listOfData.remove(index);
+                cells.remove(index);
                 return "OK";
             }
         } else {
