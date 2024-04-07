@@ -24,7 +24,7 @@ public class Main {
                      Controller controller = new Controller();
 
                      String reply = input.readUTF(); //read msg from client
-                     String[] parts = reply.split("\\s+");
+                     String[] parts = reply.split("\\s+", 3);
 
                      // Extract the command and arguments
                      String command = parts[0];
