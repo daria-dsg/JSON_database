@@ -9,7 +9,7 @@ public class Controller {
         this.command = command;
     }
 
-    public void executeCommand(Object... args) {
-        command.execute(args);
+    public String executeCommand(Object... args) {
+        return command.execute(args);
     }
 }
