@@ -1,7 +1,5 @@
 package server.command;
 
-import server.command.Command;
-
 public class Controller {
     private Command command;
 
