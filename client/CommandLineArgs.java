@@ -23,5 +23,4 @@ public class CommandLineArgs {
     public String getValue() {
         return value;
     }
-
 }
