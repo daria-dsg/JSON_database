@@ -12,18 +12,10 @@ public class Main {
     public static void main(String[] args) {
 
         //define class to hold arguments values
-        class Arguments {
-            @Parameter( names = "-t", required = true)
-            String typeOfRequest;
-
-            @Parameter (names = "-i")
-            int idOfCell;
-
-            @Parameter( names = "-m")
-            String message;
+        class CommandLineArgs {
 
         }
-        Arguments arguments  = new Arguments();
+        CommandLineArgs cli  = new CommandLineArgs();
 
         // Parse the command-line arguments
         JCommander.newBuilder()
@@ -32,7 +24,7 @@ public class Main {
                 .parse(args);
 
         //build message to sent to server
-        String msg = buildMsg(arguments.typeOfRequest, arguments.idOfCell, arguments.message);
+        String msg = buildMsg(arguments.type, arguments.idOfCell, arguments.message);
 
         try (
              Socket socket = new Socket("localhost", 9999);
