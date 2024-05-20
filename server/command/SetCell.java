@@ -9,9 +9,9 @@ public class SetCell implements Command {
         this.db = db;
     }
 
-    @Override
-    public String execute(Object... args) {
-        return db.set((int)args[0], (String)args[1]);
-    }
+//    @Override
+//    public String execute(Object... args) {
+//        return db.set((int)args[0], (String)args[1]);
+//    }
 }
 

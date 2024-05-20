@@ -1,8 +1,8 @@
 package server;
 
+import com.google.gson.JsonObject;
 import server.command.*;
 
-import javax.xml.crypto.Data;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(9999)) {
             System.out.println("Server started!");
-            DataBase db = DataBase.getInstance();
+            JsonObject database = DataBase.getInstance();
 
             while(true) {
                 try (Socket socket = serverSocket.accept();
@@ -23,7 +23,7 @@ public class Main {
 
                      Controller controller = new Controller();
 
-                     String reply = input.readUTF(); //read msg from client
+                     String request = input.readUTF(); //read request from client
                      String[] parts = reply.split("\\s+", 3);
 
                      // Extract the command and arguments
@@ -34,15 +34,15 @@ public class Main {
 
                      switch(command) {
                         case "get":
-                            controller.setCommand(new GetCell(db));
+                            controller.setCommand(new GetCell(database));
                             msg = controller.executeCommand(number);
                             break;
                         case "set":
-                            controller.setCommand(new SetCell(db));
+                            controller.setCommand(new SetCell(database));
                             msg = controller.executeCommand(number, message);
                             break;
                         case "delete":
-                            controller.setCommand(new DeleteCell(db));
+                            controller.setCommand(new DeleteCell(database));
                             msg = controller.executeCommand(number);
                             break;
                          case "exit":
