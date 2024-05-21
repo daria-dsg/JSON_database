@@ -1,4 +1,4 @@
-package server;
+package server.database;
 
 import com.google.gson.JsonObject;
 import server.exceptions.NoSuchKeyException;

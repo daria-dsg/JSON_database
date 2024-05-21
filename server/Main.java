@@ -2,6 +2,7 @@ package server;
 
 import com.google.gson.JsonObject;
 import server.command.*;
+import server.database.DataBase;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -24,13 +25,6 @@ public class Main {
                      Controller controller = new Controller();
 
                      String request = input.readUTF(); //read request from client
-                     String[] parts = reply.split("\\s+", 3);
-
-                     // Extract the command and arguments
-                     String command = parts[0];
-                     int number = parts.length > 1 ? Integer.parseInt(parts[1]) : 0;
-                     String message = parts.length > 2 ? parts[2] : null;
-                     String msg = null;
 
                      switch(command) {
                         case "get":

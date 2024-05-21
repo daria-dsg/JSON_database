@@ -1,6 +1,6 @@
 package server.command;
 
-import server.DataBase;
+import server.database.DataBase;
 
 public class SetCell implements Command {
     private final DataBase db;
