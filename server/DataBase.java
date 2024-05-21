@@ -1,6 +1,7 @@
 package server;
 
 import com.google.gson.JsonObject;
+import server.exceptions.NoSuchKeyException;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -14,7 +15,6 @@ public class DataBase {
         if (database == null) {
             database = new JsonObject();
         }
-
         return database;
     }
 
@@ -22,15 +22,14 @@ public class DataBase {
         database.addProperty(key, value);
     }
 
-//    public void get (String key) {
-//
-//        if (database.has(key)) {
-//            database.get(key);
-//        } else {
-//            throw new NoSuchKeyExcpetions;
-//        }
-//    }
-//
+    public void get (String key) {
+        if (database.has(key)) {
+            database.get(key);
+        } else {
+            throw new NoSuchKeyException();
+        }
+    }
+
 
 //    public String get (int cell) {
 //        int index = cell - 1;
