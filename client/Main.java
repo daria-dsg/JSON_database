@@ -21,7 +21,6 @@ public class Main {
                 .parse(args);
 
         String request = new Gson().toJson(cla);
-        System.out.println(request);
 
         try (
              Socket socket = new Socket("localhost", 9999);
