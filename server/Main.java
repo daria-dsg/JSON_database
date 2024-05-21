@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(9999)) {
             System.out.println("Server started!");
-            JsonObject database = DataBase.getInstance();
+            DataBase database = DataBase.getInstance();
 
             while(true) {
                 try (Socket socket = serverSocket.accept();
