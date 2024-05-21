@@ -26,24 +26,24 @@ public class Main {
 
                      String request = input.readUTF(); //read request from client
 
-                     switch(command) {
-                        case "get":
-                            controller.setCommand(new GetCell(database));
-                            msg = controller.executeCommand(number);
-                            break;
-                        case "set":
-                            controller.setCommand(new SetCell(database));
-                            msg = controller.executeCommand(number, message);
-                            break;
-                        case "delete":
-                            controller.setCommand(new DeleteCell(database));
-                            msg = controller.executeCommand(number);
-                            break;
-                         case "exit":
-                             output.writeUTF("exit");
-                             return;
-                    }
-                    output.writeUTF(msg);
+//                     switch(command) {
+//                        case "get":
+//                            controller.setCommand(new GetCell(database));
+//                            msg = controller.executeCommand(number);
+//                            break;
+//                        case "set":
+//                            controller.setCommand(new SetCell(database));
+//                            msg = controller.executeCommand(number, message);
+//                            break;
+//                        case "delete":
+//                            controller.setCommand(new DeleteCell(database));
+//                            msg = controller.executeCommand(number);
+//                            break;
+//                         case "exit":
+//                             output.writeUTF("exit");
+//                             return;
+//                    }
+//                    output.writeUTF(msg);
                 }
                 catch (IOException e) {
                     throw new RuntimeException(e);
