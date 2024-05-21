@@ -30,40 +30,11 @@ public class DataBase {
         }
     }
 
-
-//    public String get (int cell) {
-//        int index = cell - 1;
-//
-//        if (isIndexValid(index)) {
-//            String data = cells.get(index);
-//            if ("".equals(data)) {
-//                return "ERROR";
-//            } else {
-//                return data;
-//            }
-//        } else {
-//            return "ERROR";
-//        }
-//    }
-//
-//    public String delete (int cell) {
-//        int index = cell - 1;
-//
-//        if (isIndexValid(index)) {
-//            String data = cells.get(index);
-//            if (!"".equals(data)) {
-//                cells.remove(index);
-//                return "OK";
-//            }
-//        } else {
-//            return "ERROR";
-//        }
-//
-//        cells.set(index, "");
-//        return "OK";
-//    }
-//
-//    private boolean isIndexValid(int index) {
-//        return index >= 0 && index < 999;
-//    }
+    public void delete (String key) {
+        if (database.has(key)) {
+            database.remove(key);
+        } else {
+            throw new NoSuchKeyException();
+        }
+    }
 }
