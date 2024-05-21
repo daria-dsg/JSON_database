@@ -17,6 +17,6 @@ public class GetCommand implements Command {
 
     @Override
     public void execute() {
-        result = String.valueOf(DataBase.getInstance().get(key));
+        result = DataBase.getInstance().get(key);
     }
 }

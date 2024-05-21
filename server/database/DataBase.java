@@ -22,7 +22,7 @@ public class DataBase {
         database.addProperty(key, value);
     }
 
-    public void get(String key) {
+    public String get(String key) {
         if (database.has(key)) {
             database.get(key);
         } else {
