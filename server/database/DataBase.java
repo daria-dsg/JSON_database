@@ -1,7 +1,7 @@
 package server.database;
 
 import com.google.gson.JsonObject;
-import server.exceptions.NoSuchKeyException;
+import server.exception.NoSuchKeyException;
 
 public class DataBase {
     private static JsonObject database = null;
