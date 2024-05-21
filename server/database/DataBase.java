@@ -14,11 +14,11 @@ public class DataBase {
         return database;
     }
 
-    public void set (String key, String value) {
+    public void set(String key, String value) {
         database.addProperty(key, value);
     }
 
-    public void get (String key) {
+    public void get(String key) {
         if (database.has(key)) {
             database.get(key);
         } else {
@@ -26,7 +26,7 @@ public class DataBase {
         }
     }
 
-    public void delete (String key) {
+    public void delete(String key) {
         if (database.has(key)) {
             database.remove(key);
         } else {
