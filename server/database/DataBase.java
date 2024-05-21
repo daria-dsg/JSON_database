@@ -4,14 +4,18 @@ import com.google.gson.JsonObject;
 import server.exception.NoSuchKeyException;
 
 public class DataBase {
-    private static JsonObject database = null;
+
+    private static DataBase instance;
+    private JsonObject database = new JsonObject();
+
+    private DataBase() {};
 
     // Static method to get instance of database
-    public static JsonObject getInstance() {
-        if (database == null) {
-            database = new JsonObject();
+    public static DataBase getInstance() {
+        if (instance == null) {
+            instance = new DataBase();
         }
-        return database;
+        return instance;
     }
 
     public void set(String key, String value) {

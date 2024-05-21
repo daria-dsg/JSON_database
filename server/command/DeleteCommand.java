@@ -1,14 +1,22 @@
 package server.command;
 
-public class DeleteCde implements Command {
-    private final DataBase db;
+import server.database.DataBase;
 
-    public DeleteCell(DataBase db) {
-        this.db = db;
+public class DeleteCommand implements Command {
+
+    private String key;
+    private String result;
+
+    public DeleteCommand (String key) {
+        this.key = key;
+    }
+
+    public String getResult() {
+        return result;
     }
 
     @Override
-    public String execute(Object... args) {
-        return db.delete((int)args[0]);
+    public void execute() {
+        result = DataBase.getInstance().delete(key);
     }
 }
