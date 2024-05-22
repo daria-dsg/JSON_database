@@ -1,16 +1,19 @@
 package server.command;
 
+import server.database.DataBase;
 
-public class SetCde implements Command {
-    private final DataBase db;
+public class SetCommand implements Command {
 
-    public SetCell(DataBase db) {
-        this.db = db;
+    private String key;
+    private String value;
+
+    public SetCommand (String key, String value) {
+        this.key = key;
+        this.value = value;
     }
 
-//    @Override
-//    public String execute(Object... args) {
-//        return db.set((int)args[0], (String)args[1]);
-//    }
+    @Override
+    public void execute() {
+        DataBase.getInstance().set(key, value);
+    }
 }
-
