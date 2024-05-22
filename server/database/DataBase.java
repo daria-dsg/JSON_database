@@ -6,9 +6,9 @@ import server.exception.NoSuchKeyException;
 public class DataBase {
 
     private static DataBase instance;
-    private JsonObject database = new JsonObject();
+    private final JsonObject database = new JsonObject();
 
-    private DataBase() {};
+    private DataBase() {}
 
     // Static method to get instance of database
     public static DataBase getInstance() {
