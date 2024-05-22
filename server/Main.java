@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import server.command.*;
 import server.database.DataBase;
 import server.model.Request;
+import server.model.Response;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -24,32 +25,38 @@ public class Main {
                      DataInputStream input = new DataInputStream(socket.getInputStream());
                      DataOutputStream output = new DataOutputStream(socket.getOutputStream())) {
 
-                     Controller controller = new Controller();
+                    Controller controller = new Controller();
 
                     //JSON request from client deserialization
                     Request request = new Gson().fromJson(input.readUTF(), Request.class);
+                    Response response = new Response();
 
-                     switch(request.getType()) {
-                        case "get":
-                            GetCommand getCmd = new GetCommand(request.getKey());
-                            controller.executeCommand(getCmd);
-
-                            break;
-                        case "set":
-                            SetCommand setCmd = new SetCommand(request.getKey(), request.getValue());
-                            controller.executeCommand(setCmd);
-
-                            break;
-                        case "delete":
-                            DeleteCommand deleteCmd = new DeleteCommand(request.getKey());
-                            controller.executeCommand(deleteCmd);
-
-                            break;
-                         case "exit":
-                             output.writeUTF("exit");
-                             return;
+                    try {
+                        switch(request.getType()) {
+                            case "get":
+                                GetCommand getCmd = new GetCommand(request.getKey());
+                                controller.executeCommand(getCmd);
+                                response.setResponse("OK");
+                                response.setValue(getCmd.getResult());
+                                break;
+                            case "set":
+                                SetCommand setCmd = new SetCommand(request.getKey(), request.getValue());
+                                controller.executeCommand(setCmd);
+                                response.setResponse("OK");
+                                break;
+                            case "delete":
+                                DeleteCommand deleteCmd = new DeleteCommand(request.getKey());
+                                controller.executeCommand(deleteCmd);
+                                response.setResponse("OK");
+                                break;
+                            case "exit":
+                                output.writeUTF("exit");
+                                return;
+                        }
+                    } catch (RuntimeException e) {
+                        response.setResponse("ERROR");
+                        response.setReason("No such key");
                     }
-                    output.writeUTF();
                 }
                 catch (IOException e) {
                     throw new RuntimeException(e);
