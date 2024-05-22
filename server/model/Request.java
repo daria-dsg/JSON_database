@@ -6,10 +6,10 @@ public class Request {
     @Parameter( names = "-t", required = true)
     private String type;
 
-    @Parameter (names = "-i")
+    @Parameter (names = "-k")
     private String key;
 
-    @Parameter( names = "-m")
+    @Parameter( names = "-v")
     private String value;
 
     public String getType() {
