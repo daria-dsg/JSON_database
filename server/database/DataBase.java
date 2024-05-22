@@ -7,7 +7,6 @@ public class DataBase {
 
     private static DataBase instance;
     private final JsonObject database = new JsonObject();
-
     private DataBase() {}
 
     // Static method to get instance of database
