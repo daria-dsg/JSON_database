@@ -36,18 +36,20 @@ public class Main {
 
                             break;
                         case "set":
-                            controller.setCommand(new SetCell(database));
-                            msg = controller.executeCommand(number, message);
+                            SetCommand setCmd = new SetCommand(request.getKey(), request.getValue());
+                            controller.executeCommand(setCmd);
+
                             break;
                         case "delete":
-                            controller.setCommand(new DeleteCell(database));
-                            msg = controller.executeCommand(number);
+                            DeleteCommand deleteCmd = new DeleteCommand(request.getKey());
+                            controller.executeCommand(deleteCmd);
+
                             break;
                          case "exit":
                              output.writeUTF("exit");
                              return;
                     }
-                    output.writeUTF(msg);
+                    output.writeUTF();
                 }
                 catch (IOException e) {
                     throw new RuntimeException(e);
