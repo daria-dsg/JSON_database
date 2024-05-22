@@ -27,7 +27,7 @@ public class Main {
 
                     Controller controller = new Controller();
 
-                    //JSON request from client deserialization
+                    //Deserialization of JSON request from client
                     Request request = new Gson().fromJson(input.readUTF(), Request.class);
                     Response response = new Response();
 
@@ -57,6 +57,8 @@ public class Main {
                         response.setResponse("ERROR");
                         response.setReason("No such key");
                     }
+
+                    output.writeUTF(new Gson().toJson(response));
                 }
                 catch (IOException e) {
                     throw new RuntimeException(e);
