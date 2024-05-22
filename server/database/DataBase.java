@@ -24,7 +24,7 @@ public class DataBase {
 
     public String get(String key) {
         if (database.has(key)) {
-            database.get(key);
+            return String.valueOf(database.get(key));
         } else {
             throw new NoSuchKeyException();
         }
