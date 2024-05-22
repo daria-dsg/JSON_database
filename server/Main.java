@@ -50,7 +50,7 @@ public class Main {
                                 response.setResponse("OK");
                                 break;
                             case "exit":
-                                output.writeUTF("exit");
+                                response.setResponse("OK");
                                 return;
                         }
                     } catch (RuntimeException e) {
